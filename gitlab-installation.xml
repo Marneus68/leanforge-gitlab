@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8" ?>
 <tutorial xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://leanforge.dev/tutorial https://github.com/HugoPoi/LeanForge/raw/master/xsd/tutotialschema.xsd">
   <meta>
@@ -15,6 +14,21 @@
   </meta>
   <content lang="en-US">
     <title><![CDATA[Tutorial Name]]></title>
+	
+	<step name ="Overview"> 
+	      <substep><text>><![CDATA[
+	 The GitLab installation consists of setting up the following components:
+<ol>
+<li>Packages / Dependencies</li>
+<li>Ruby</li>
+<li>System Users</li>
+<li>Database</li>
+<li>GitLab</li>
+<li>Nginx</li>
+</ol>
+      ]]>	
+	</text>      </substep>
+	</step>
     <step name="First Step">
       <substep><text><![CDATA[
         My first text line. <a class="btn btn-default" href="http://download.software.com/">Download</a>
@@ -39,28 +53,109 @@
     </step>
   </content>
   <content lang="fr-FR">
-    <title><![CDATA[Premier tutoriel]]></title>
-    <step name="First Step">
-      <substep><text><![CDATA[
-        Ma première ligne de texte. <a class="btn btn-default" href="http://download.software.com/">Download</a>
-      ]]></text></substep>
-      <substep><text><![CDATA[
-        Dézippez le fichier télechargé.
-      ]]></text></substep>
-      <substep><text><![CDATA[
-        Lancez l'éxecutable.
-      ]]></text></substep>
-    </step>
-    <step name="Second Step">
-      <substep><text><![CDATA[
-        Allez dans le menu de configuration.
-      ]]></text></substep>
-      <substep><text><![CDATA[
-        Configurez les préférences.
-      ]]></text></substep>
-      <substep><text><![CDATA[
-        Cliquez sur le bonton "démarer".
-      ]]></text></substep>
-    </step>
+    <title><![CDATA[Gitlab]]></title>
+		
+	<step name="Sélectionnez la version à installer ">
+	<substep>
+	<text><![CDATA[
+	Assurez-vous de la version d'installation de GitLab que vous souhaitez installer. Dans la plupart des cas, ce devrait être la branche du numéro le plus élevé.
+	      ]]>	</text>
+	</substep>
+	</step>
+	
+	<step name="Packages / Dépendances ">
+	<substep>
+	<text><![CDATA[
+<p>	<b>sudo</b> n'est pas installé sur Debian par défaut. Assurez-vous que votre système est à jour.<br>
+	      
+<code># run as root!<br>
+apt-get update -y<br>
+apt-get upgrade -y<br>
+apt-get install sudo -y
+</code></p>
+<p><b>Remarque:</b> Lors de l'installation de certains fichiers devront être modifiés manuellement. 
+Si vous êtes familier avec Vim définir comme éditeur par défaut avec les commandes ci-dessous.
+ Si vous n'êtes pas familier avec Vim s'il vous plaît sauter ceci et continuer à utiliser l'éditeur par défaut.<br>
+ <code>
+ # Install vim and set as default editor <br>
+sudo apt-get install -y vim<br>
+sudo update-alternatives --set editor /usr/bin/vim.basic
+ </code></p>
+ 
+ <p>Installez les paquets nécessaires (nécessaires pour compiler Ruby et des extensions natives à gemmes Ruby):<br>
+ <code>sudo apt-get install -y build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev logrotate python-docutils</code>
+ </p>
+ 
+ <p>Assurez-vous que vous avez la bonne version de Git installé <br>
+ <code># Install Git <br>
+sudo apt-get install -y git-core <br>
+ <br>
+# Make sure Git is version 1.7.10 or higher, for example 1.7.12 or 2.0.0 <br>
+git --version</code>
+ </p>
+ 
+ <p>Le système de package de Git est trop vieux ? Retirez-le et compiler à partir des sources.<br>
+ <code># Remove packaged Git<br>
+sudo apt-get remove git-core<br>
+<br>
+# Install dependencies<br>
+sudo apt-get install -y libcurl4-openssl-dev libexpat1-dev gettext libz-dev libssl-dev build-essential<br>
+<br>
+# Download and compile from source<br>
+cd /tmp<br>
+curl --progress https://www.kernel.org/pub/software/scm/git/git-2.0.0.tar.gz | tar xz<br>
+cd git-2.0.0/<br>
+make prefix=/usr/local all<br>
+<br>
+# Install into /usr/local/bin<br>
+sudo make prefix=/usr/local install<br>
+<br>
+# When editing config/gitlab.yml (Step 5), change the git bin_path to /usr/local/bin/git</code>
+ </p>
+ <p>
+ <b>Remarque:</b> Afin de recevoir des notifications par courrier électronique, assurez-vous d'installer un serveur de messagerie. Par défaut, Debian est livré avec exim4 alors que Ubuntu n'est pas livré avec un. Le serveur de courrier recommandé est postfix et vous pouvez l'installer avec:<br>
+ <code>sudo apt-get install -y postfix</code>
+ </p>
+ <p>Ensuite, sélectionnez le «site Internet» et appuyez sur Entrée pour confirmer le nom d'hôte.</p>
+		  ]]>	
+		  </text>
+	</substep>
+	</step>
+	
+	<step name="Ruby">
+	<substep>
+	<text><![CDATA[
+	<p>
+	Retirez l'ancien Ruby 1.8 si présent<br>
+	<code>sudo apt-get remove ruby1.8</code>
+	</p>
+	<p>Télécharger Ruby et compile le:<br>
+	<code>mkdir /tmp/ruby && cd /tmp/ruby<br>
+curl --progress ftp://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz | tar xz<br>
+cd ruby-2.1.2<br>
+./configure --disable-install-rdoc<br>
+make<br>
+sudo make install</code>
+	</p>
+	<p>Installez le Bundler Gem:
+	<code>sudo gem install bundler --no-ri --no-rdoc</code>
+	</p>
+	      ]]>	</text>
+	</substep>
+	</step>
+	
+	<step name="Les utilisateurs du système">
+	<substep>
+	<text><![CDATA[
+	<p>
+	Créez un utilisateur git pour Gitlab:<br>
+	<code>sudo adduser --disabled-login --gecos 'GitLab' git</code>
+	</p>
+	
+	      ]]>	</text>
+	</substep>
+	</step>
+	
+	
   </content>
 </tutorial>
