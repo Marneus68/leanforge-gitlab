@@ -60,7 +60,7 @@
 	<substep>
 	<text><![CDATA[
 	Assurez-vous de la version d'installation de GitLab que vous souhaitez installer. Dans la plupart des cas, ce devrait être la branche du numéro le plus élevé.
-	      ]]>	</text>
+	 <a class="btn btn-default" href="http://localhost:8080/EsgiRouter/">Forum</a> ]]>	</text>
 	</substep>
 	</step>
 	
