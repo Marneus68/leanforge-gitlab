@@ -349,15 +349,21 @@ Faire GitLab démarrer au démarrage:</p>
 # or<br>
 sudo /etc/init.d/gitlab restart</code>
 </p>
-<p>
-<h2>Nginx</h2>
-</p>
-
 
 	      ]]>	</text>
 	</substep>
 	</step>
+	<step name="Nginx">
+	<substep>
+	<text><![CDATA[
+	<p>
+	Nous vous recommandons d'utiliser une base de données PostgreSQL. Pour vérifier MySQL <a class="btn btn-default"  href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/database_mysql.md">MySQL guide d'installation.</a> Remarque: car nous avons besoin de faire usage d'extensions donc vous avez besoin au moins pgsql 9.1.<br>
+	<code><b>Remarque:</b> Nginx est un serveur web supporté officiellement pour GitLab. Si vous ne pouvez pas ou ne voulez pas utiliser Nginx comme serveur web, avoir un regard sur la documentation GitLab.</code>
+	</p>
 	
+	      ]]>	</text>
+	</substep>
+	</step>
 	
 	
 	
