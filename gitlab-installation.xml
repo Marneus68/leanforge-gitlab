@@ -184,6 +184,20 @@ sudo -u git -H psql -d gitlabhq_production</code>
 	</substep>
 	</step>
 	
+		<step name="GitLab">
+	<substep>
+	<text><![CDATA[
+	<p>
+	
+	<code># We'll install GitLab into home directory of the user "git"<br>
+cd /home/git</code>
+	</p>
+	
+	      ]]>	</text>
+	</substep>
+	</step>
+	
+	
 	
 	
   </content>
