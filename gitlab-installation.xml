@@ -360,6 +360,25 @@ sudo /etc/init.d/gitlab restart</code>
 	Nous vous recommandons d'utiliser une base de données PostgreSQL. Pour vérifier MySQL <a class="btn btn-default"  href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/database_mysql.md">MySQL guide d'installation.</a> Remarque: car nous avons besoin de faire usage d'extensions donc vous avez besoin au moins pgsql 9.1.<br>
 	<code><b>Remarque:</b> Nginx est un serveur web supporté officiellement pour GitLab. Si vous ne pouvez pas ou ne voulez pas utiliser Nginx comme serveur web, avoir un regard sur la documentation GitLab.</code>
 	</p>
+	</p>
+	<h2>Installation</h2>
+	<code>sudo apt-get install -y nginx</code>
+	</p>
+	<p>
+	<h2>Configuration du Site </h2>
+	<p>Copiez l'exemple de config:</p>
+	<code>sudo cp lib/support/nginx/gitlab /etc/nginx/sites-available/gitlab<br>
+sudo ln -s /etc/nginx/sites-available/gitlab /etc/nginx/sites-enabled/gitlab</code>
+	</p>
+	<p>Assurez-vous de modifier le fichier de configuration en fonction de votre configuration:<br>
+	<code># Change YOUR_SERVER_FQDN to the fully-qualified<br>
+# domain name of your host serving GitLab.<br>
+sudo editor /etc/nginx/sites-available/gitlab</code></p>
+	
+	<p>
+	<h2>Redémarrer : </h2>
+	<code>sudo service nginx restart</code>
+	</p>
 	
 	      ]]>	</text>
 	</substep>
