@@ -156,7 +156,6 @@ sudo make install</code>
 	      ]]>	</text>
 	</substep>
 	</step>
-	
 	<step name="Base de données">
 	<substep>
 	<text><![CDATA[
@@ -184,7 +183,6 @@ sudo -u git -H psql -d gitlabhq_production</code>
 	      ]]>	</text>
 	</substep>
 	</step>
-	
 		<step name="GitLab">
 	<substep>
 	<text><![CDATA[
@@ -383,6 +381,21 @@ sudo editor /etc/nginx/sites-available/gitlab</code></p>
 	      ]]>	</text>
 	</substep>
 	</step>
+		<step name="Done !">
+	<substep>
+	<text><![CDATA[
+	<p>
+	<h2>Double-vérification de l'état de l'application</h2>
+	Pour vous assurer que vous n'avez pas manqué quoi que ce soit exécuter une vérification plus approfondie avec:<br>
+	<code>sudo -u git -H bundle exec rake gitlab:check RAILS_ENV=production</code>
+	</p>
+	</p>
+	<b>Si tous les éléments sont en vert, alors félicitations vous avez installé GitLab!<b><br>
+	
+	      ]]>	</text>
+	</substep>
+	</step>
+	
 	
 	
 	
