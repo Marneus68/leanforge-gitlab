@@ -3,12 +3,9 @@
 <tutorial xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://leanforge.dev/tutorial https://github.com/HugoPoi/LeanForge/raw/master/xsd/tutotialschema.xsd">
   <meta>
     <software id="gitlab">
-      <name><![CDATA[Maven]]></name>
+      <name><![CDATA[Gitlab]]></name>
       <website href="https://about.gitlab.com"><![CDATA[Gitlab]]></website>
     </software>
-    <languages>
-      <codinglang>java</codinglang>
-    </languages>
     <plateforms>linux-ubuntu</plateforms>
     <categories>
       <category>manage-sources</category>
@@ -42,29 +39,27 @@
     </step>
   </content>
   <content lang="fr-FR">
-    <title><![CDATA[Installation de Maven]]></title>
+    <title><![CDATA[Premier tutoriel]]></title>
     <step name="First Step">
       <substep><text><![CDATA[
-        Pour linux l'installation de Maven est relativement simple car un packet est présent sur les dépôts de la majorité des distributions.
-        Cliquez sur le lien suivant : <a href="apt://maven">Maven via APT</a>
+        Ma première ligne de texte. <a class="btn btn-default" href="http://download.software.com/">Download</a>
       ]]></text></substep>
       <substep><text><![CDATA[
-        Si le lien ci-dessus ne fonctionne pas vous pouvez ouvrir un terminal et saisir : "apt-get install maven"
+        Dézippez le fichier télechargé.
       ]]></text></substep>
       <substep><text><![CDATA[
-        Maintenant que vous avez installé Maven, vous pouvez dès à présent vérifier qu'il est fonctionnel en tappant dans un terminal : "mvn --version".
-        Les lignes suivantes s'afficheront.
+        Lancez l'éxecutable.
       ]]></text></substep>
     </step>
     <step name="Second Step">
       <substep><text><![CDATA[
-        Go to the configuration menu
+        Allez dans le manu de configuration.
       ]]></text></substep>
       <substep><text><![CDATA[
-        Configure this settings : .
+        Configurez les préférences.
       ]]></text></substep>
       <substep><text><![CDATA[
-        Then click on start button.
+        Cliquez sur le bonton "démarer".
       ]]></text></substep>
     </step>
   </content>
