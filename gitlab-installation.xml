@@ -344,10 +344,10 @@ Faire GitLab démarrer au démarrage:</p>
 <code>sudo -u git -H bundle exec rake assets:precompile RAILS_ENV=production</code>
 </p>
 <p>
-<h2>Démarrez votre instance de GitLab <h2>
+<h2>Démarrez votre instance de GitLab </h2>
 <code>sudo service gitlab start<br>
 # or<br>
-sudo /etc/init.d/gitlab restart<code>
+sudo /etc/init.d/gitlab restart</code>
 </p>
 <p>
 <h2>Nginx</h2>
