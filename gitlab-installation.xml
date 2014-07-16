@@ -192,7 +192,67 @@ sudo -u git -H psql -d gitlabhq_production</code>
 	<code># We'll install GitLab into home directory of the user "git"<br>
 cd /home/git</code>
 	</p>
-	
+	<p>
+	<h2>Cloner le Source</h2>
+	<code># Clone GitLab repository<br>
+sudo -u git -H git clone https://gitlab.com/gitlab-org/gitlab-ce.git -b 7-0-stable gitlab<br>
+
+# Go to gitlab dir<br>
+cd /home/git/gitlab</code>
+	</p>
+	<p>
+	<h2>Configurer</h2>
+	<code>
+	cd /home/git/gitlab<br>
+
+# Copy the example GitLab config<br>
+sudo -u git -H cp config/gitlab.yml.example config/gitlab.yml<br>
+<br>
+# Make sure to change "localhost" to the fully-qualified domain name of your<br>
+# host serving GitLab where necessary<br>
+#<br>
+# If you want to use https make sure that you set `https` to `true`. See #using-https for all necessary details.<br>
+#<br>
+# If you installed Git from source, change the git bin_path to /usr/local/bin/git<br>
+sudo -u git -H editor config/gitlab.yml<br>
+
+# Make sure GitLab can write to the log/ and tmp/ directories<br>
+sudo chown -R git log/<br>
+sudo chown -R git tmp/<br>
+sudo chmod -R u+rwX log/<br>
+sudo chmod -R u+rwX tmp/<br>
+<br>
+# Create directory for satellites<br>
+sudo -u git -H mkdir /home/git/gitlab-satellites<br>
+sudo chmod u+rwx,g=rx,o-rwx /home/git/gitlab-satellites<br>
+<br>
+# Make sure GitLab can write to the tmp/pids/ and tmp/sockets/ directories<br>
+sudo chmod -R u+rwX tmp/pids/<br>
+sudo chmod -R u+rwX tmp/sockets/<br>
+<br>
+# Make sure GitLab can write to the public/uploads/ directory<br>
+sudo chmod -R u+rwX  public/uploads<br>
+<br>
+# Copy the example Unicorn config<br>
+sudo -u git -H cp config/unicorn.rb.example config/unicorn.rb<br>
+<br>
+# Enable cluster mode if you expect to have a high load instance<br>
+# Ex. change amount of workers to 3 for 2GB RAM server<br>
+sudo -u git -H editor config/unicorn.rb<br>
+<br>
+# Copy the example Rack attack config<br>
+sudo -u git -H cp config/initializers/rack_attack.rb.example config/initializers/rack_attack.rb<br>
+<br>
+# Configure Git global settings for git user, useful when editing via web<br>
+# Edit user.email according to what is set in gitlab.yml<br>
+sudo -u git -H git config --global user.name "GitLab"<br>
+sudo -u git -H git config --global user.email "example@example.com"<br>
+sudo -u git -H git config --global core.autocrlf input<br>
+	</code>
+	</p>
+	<p>
+	<b>Remarque importante:</b> Assurez-vous de modifier à la fois gitlab.yml et unicorn.rb pour correspondre à votre configuration.
+	</p>
 	      ]]>	</text>
 	</substep>
 	</step>
