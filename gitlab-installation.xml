@@ -55,6 +55,7 @@
   <content lang="fr-FR">
     <title><![CDATA[Gitlab]]></title>
 		
+		
 	<step name="Sélectionnez la version à installer ">
 	<substep>
 	<text><![CDATA[
@@ -253,6 +254,106 @@ sudo -u git -H git config --global core.autocrlf input<br>
 	<p>
 	<b>Remarque importante:</b> Assurez-vous de modifier à la fois gitlab.yml et unicorn.rb pour correspondre à votre configuration.
 	</p>
+	
+	<p>
+	<h2>Configurer les paramètres GitLab DB</h2>
+	<code># PostgreSQL only:<br>
+sudo -u git cp config/database.yml.postgresql config/database.yml<br>
+<br>
+# MySQL only:<br>
+sudo -u git cp config/database.yml.mysql config/database.yml<br>
+<br>
+# MySQL and remote PostgreSQL only:<br>
+# Update username/password in config/database.yml.<br>
+# You only need to adapt the production settings (first part).<br>
+# If you followed the database guide then please do as follows:<br>
+# Change 'secure password' with the value you have given to $password<br>
+# You can keep the double quotes around the password<br>
+sudo -u git -H editor config/database.yml<br>
+<br>
+# PostgreSQL and MySQL:<br>
+# Make config/database.yml readable to git only<br>
+sudo -u git -H chmod o-rwx config/database.yml</code>
+	</p>
+	
+	<p>
+	<h2>Installer Gems</h2>
+	<p><b>Remarque: </b> undler 1.5.2, vous pouvez appeler paquet install-jN (où N est le nombre de vos cœurs de processeur) et profiter de l'installation parallèle gems différente mesurable dans le temps de la fin (~ 60% plus rapide). Vérifiez le nombre de vos cœurs avec nproc.  D'abord assurez-vous que vous avez bundler> = 1.5.2</p>
+	<code>cd /home/git/gitlab<br>
+	<br>
+# For PostgreSQL (note, the option says "without ... mysql")<br>
+sudo -u git -H bundle install --deployment --without development test mysql aws<br>
+<br>
+# Or if you use MySQL (note, the option says "without ... postgres")<br>
+sudo -u git -H bundle install --deployment --without development test postgres aws</code>
+	</p>
+	
+	<p>
+	<h2>Installer GitLab shell</h2>
+	<p>GitLab Shell est un accès ssh et le logiciel de gestion du référentiel développé spécialement pour GitLab.</p>
+	<code># Go to the Gitlab installation folder:<br>
+cd /home/git/gitlab<br>
+<br>
+# Run the installation task for gitlab-shell (replace `REDIS_URL` if needed):<br>
+sudo -u git -H bundle exec rake gitlab:shell:install[v1.9.6] REDIS_URL=redis://localhost:6379 RAILS_ENV=production<br>
+<br>
+# By default, the gitlab-shell config is generated from your main gitlab config.<br>
+#<br>
+# Note: When using GitLab with HTTPS please change the following:<br>
+# - Provide paths to the certificates under `ca_file` and `ca_path` options.<br>
+# - The `gitlab_url` option must point to the https endpoint of GitLab.<br>
+# - In case you are using self signed certificate set `self_signed_cert` to `true`.<br>
+# See #using-https for all necessary details.<br>
+#<br>
+# You can review (and modify) the gitlab-shell config as follows:<br>
+sudo -u git -H editor /home/git/gitlab-shell/config.yml</code>
+	</p>
+	
+	<p>
+	<h2>Initialiser la base de données et activer les fonctions avancées</h2>
+	<code>sudo -u git -H bundle exec rake gitlab:setup RAILS_ENV=production<br>
+<br>
+# Type 'yes' to create the database tables.<br>
+<br>
+# When done you see 'Administrator account created:'</code>
+	</p>
+	
+	<p>
+	<h2>Installez Init Script</h2>
+	<p>Télécharger le script d'initialisation (/etc/init.d/gitlab):</p>
+	<code>sudo cp lib/support/init.d/gitlab /etc/init.d/gitlab</code>
+	<p>Si vous installez avec un dossier non par défaut ou une copie de l'utilisateur,modifiez le fichier des valeurs par défaut:</p>
+	<code>sudo cp lib/support/init.d/gitlab.default.example /etc/default/gitlab</code>
+	</p>
+	<p>Si vous avez installé gitlab dans un autre répertoire ou un autre utilisateur que la valeur par défaut, vous devez modifier ces paramètres dans / etc / default / gitlab. Ne pas modifier / etc / init.d / gitlab comme il sera changé sur la mise à niveau. 
+<br>
+<br>
+Faire GitLab démarrer au démarrage:</p>
+<code>sudo update-rc.d gitlab defaults 21</code>
+<p>
+<h2>Configurer logrotate</h2>
+<code>sudo cp lib/support/logrotate/gitlab /etc/logrotate.d/gitlab</code>
+</p>
+<p>
+<h2>Vérifier l'état de l'application</h2>
+<p>Vérifiez si GitLab et son environnement sont correctement configurés:
+<code>sudo -u git -H bundle exec rake gitlab:env:info RAILS_ENV=production</code></p>
+</p>
+<p>
+<h2>Compilez assets</h2>
+<code>sudo -u git -H bundle exec rake assets:precompile RAILS_ENV=production</code>
+</p>
+<p>
+<h2>Démarrez votre instance de GitLab <h2>
+<code>sudo service gitlab start<br>
+# or<br>
+sudo /etc/init.d/gitlab restart<code>
+</p>
+<p>
+<h2>Nginx</h2>
+</p>
+
+
 	      ]]>	</text>
 	</substep>
 	</step>
