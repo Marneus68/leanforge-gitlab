@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tutorial xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://leanforge.dev/tutorial https://github.com/HugoPoi/LeanForge/raw/master/xsd/tutotialschema.xsd">
+  <meta>
+    <software id="gitlab">
+      <name><![CDATA[Gitlab]]></name>
+      <website href="https://about.gitlab.com"><![CDATA[Gitlab]]></website>
+    </software>
+    <plateforms>linux-ubuntu</plateforms>
+    <categories>
+      <category>manage-sources</category>
+      <category>manage-project</category>
+    </categories>
+    <keywords><![CDATA[git,gitlab,installation,linux]]></keywords>
+  </meta>
+  <content lang="en-US">
+    <title><![CDATA[Tutorial Name]]></title>
+	
+	<step name ="Overview"> 
+	      <substep><text>><![CDATA[
+	 The GitLab installation consists of setting up the following components:
+<ol>
+<li>Packages / Dependencies</li>
+<li>Ruby</li>
+<li>System Users</li>
+<li>Database</li>
+<li>GitLab</li>
+<li>Nginx</li>
+</ol>
+      ]]>	
+	</text>      </substep>
+	</step>
+    <step name="First Step">
+      <substep><text><![CDATA[
+        My first text line. <a class="btn btn-default" href="http://download.software.com/">Download</a>
+      ]]></text></substep>
+      <substep><text><![CDATA[
+        Unzip the downloaded file.
+      ]]></text></substep>
+      <substep><text><![CDATA[
+        Launch executable file "sample.exe"
+      ]]></text></substep>
+    </step>
+    <step name="Second Step">
+      <substep><text><![CDATA[
+        Go to the configuration menu
+      ]]></text></substep>
+      <substep><text><![CDATA[
+        Configure this settings : .
+      ]]></text></substep>
+      <substep><text><![CDATA[
+        Then click on start button.
+      ]]></text></substep>
+    </step>
+  </content>
+  <content lang="fr-FR">
+    <title><![CDATA[Gitlab]]></title>
+		
+		
+	<step name="Utilisation de l'interface">
+	<substep>
+	<text><![CDATA[
+<p>GitLab peut être utilise au travers d'une interface web. Lors de l'ouverture d'une session, l'utilisateur en cours se trouve sur le Dashboard, dans la section Home.</p>
+     ]]>	</text>
+	</substep>
+	</step>
+	
+	<step name="Home">
+	<substep>
+	<text><![CDATA[
+<p>Depuis cette vue du Dashboard, les diférentes sections de l'application peuvent être atteintes. De plus, les dernières activités des membres de l'équipe sont visible dans un fil d'actualité. Ces actualités représentent les activités effectuées sur les projets visible par l'utilisateur connecté. Ces actualités peuvent être des &quot;push&quot; de &quot;commits&quot;, l'ouverture ou la fermeture d'&quot;issue&quot;, des billets indiquant des problèmes sur les projets ainsi que les messages de réponsse à ces billets.</p>
+<subset><img src="https://about.gitlab.com/images/screens/gitlab_dash.png" title="" alt="" width=800 height=600 /></subset>
+<p>Depuis cette vue, l'utilisateur a aussi accès a une liste de tout les projets auquels il a accès commenceant par le projet le plus récemment édité.</p>
+		  ]]>	
+		  </text>
+	</substep>
+	</step>
+	<step name="Vue projet">
+	<substep>
+	<text><![CDATA[
+<p>En cliquant sur un projet auquel in a accès, l'utilisateur est mené sur une page spécifique au projet. Cette page résume les dernieres activités effectuées sur ce projet. Il est possible d'accéder aux fichiers contenus dans le dépot, voir une liste des commits, une liste des &quot;issues&quot;, un wiki associé editable par les membres du projet et une page de configuration.</p>
+<subset><img src="https://about.gitlab.com/images/screens/gitlab_project.png" title="" alt="" width=800 height=600 /></subset>
+	      ]]>	</text>
+	</substep>
+	</step>
+	
+	<step name="Liste des commits">
+	<substep>
+	<text><![CDATA[
+<p>En cliquant sur &quot;Commits&quot; l'utilisateur accède à une liste des derniers commits effectués sur le dépot ainsi que leur auteurs respectifs.</p>
+<p>En cliquant sur un des commits, l'utilisateur a accès a des informations détailles sur les modifications effectuées lors de ce commit.</p>
+<subset><img src="https://about.gitlab.com/images/screens/diff.png" title="" alt="" width=800 height=600 /></subset>
+	      ]]>	</text>
+	</substep>
+	</step>
+	<step name="Revues des &quot;Pull request&quot;">
+	<substep>
+	<text><![CDATA[
+<p>Depuis la page du projet. L'utilisateur autarisé peut passer en revue les "pull requests", demandes d'autres utilisateurs d'ajouter ou modifier des series de commits au dépot principal.</p>
+<subset><img src="https://about.gitlab.com/images/screens/gitlab_project_mr.png" title="" alt="" width=800 height=600 /></subset>
+	      ]]>	</text>
+	</substep>
+	</step>
+		<step name="Traitement des &quot;Issues&quot;">
+	<substep>
+	<text><![CDATA[
+<p>Depuis la page du projet, l'utilisateur a la possibilité de créer, fermer ou répondre aux "Issues". Cet outil est souvent utilisé pour signaller des bugs à fixer, signaler la necessiter d'implémenter de nouvelles fonctionnalités et permet aux différents membres du projet de dicuter sur l'implémentation. L'interface en ligne permettant d'éditer les "issues" et les réponses permet notamment de formater les réponse en utilisant Markdown et peut référencer des commits effectués dans l'arborécence du projet.</p>
+<subset><img src="https://about.gitlab.com/images/screens/dash_issues.png" title="" alt="" width=800 height=600 /></subset>
+	      ]]>	</text>
+	</substep>
+    </step>
+  </content>
+</tutorial>
