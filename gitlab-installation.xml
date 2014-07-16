@@ -53,7 +53,7 @@
     </step>
     <step name="Second Step">
       <substep><text><![CDATA[
-        Allez dans le manu de configuration.
+        Allez dans le menu de configuration.
       ]]></text></substep>
       <substep><text><![CDATA[
         Configurez les préférences.
