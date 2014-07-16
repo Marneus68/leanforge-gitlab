@@ -2,7 +2,7 @@
 <tutorial xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://leanforge.dev/tutorial https://github.com/HugoPoi/LeanForge/raw/master/xsd/tutotialschema.xsd">
   <meta>
     <software id="gitlab">
-      <name><![CDATA[Gitlab]]></name>
+      <name><![CDATA[Gitlab - Utilisation]]></name>
       <website href="https://about.gitlab.com"><![CDATA[Gitlab]]></website>
     </software>
     <plateforms>linux-ubuntu</plateforms>
