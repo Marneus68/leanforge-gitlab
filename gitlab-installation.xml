@@ -156,6 +156,35 @@ sudo make install</code>
 	</substep>
 	</step>
 	
+	<step name="Base de données">
+	<substep>
+	<text><![CDATA[
+	<p>
+	Nous vous recommandons d'utiliser une base de données PostgreSQL. Pour vérifier MySQL <a class="btn btn-default"  href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/database_mysql.md">MySQL guide d'installation.</a> Remarque: car nous avons besoin de faire usage d'extensions donc vous avez besoin au moins pgsql 9.1.<br>
+	<code># Install the database packages<br>
+sudo apt-get install -y postgresql-9.1 postgresql-client libpq-dev<br>
+<br>
+# Login to PostgreSQL<br>
+sudo -u postgres psql -d template1<br>
+<br>
+# Create a user for GitLab.<br>
+template1=# CREATE USER git CREATEDB;<br>
+<br>
+# Create the GitLab production database & grant all privileges on database<br>
+template1=# CREATE DATABASE gitlabhq_production OWNER git;<br>
+<br>
+# Quit the database session<br>
+template1=# \q<br>
+<br>
+# Try connecting to the new database with the new user<br>
+sudo -u git -H psql -d gitlabhq_production</code>
+	</p>
+	
+	      ]]>	</text>
+	</substep>
+	</step>
+	
+	
 	
   </content>
 </tutorial>
